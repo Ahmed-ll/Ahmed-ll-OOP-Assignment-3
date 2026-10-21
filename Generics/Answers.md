@@ -33,3 +33,11 @@ Both `Student` and `Course` implement this interface, guaranteeing that they pro
 The constraint `where T : IHasId` tells the compiler that every type used with `Store<T>` must implement `IHasId`. Therefore, `GetById` can access `item.Id` safely.
 
 This removes the duplicated store classes while keeping the code type-safe.
+
+
+
+## Why must `new Store<string>()` NOT compile?
+
+`Store<T>` is declared with the constraint `where T : IHasId`, so every type
+argument must implement `IHasId`.
+`string` does not implement it, so the compiler rejects the line with error CS0315: "The type 'string' cannot be used as type parameter 'T' in the generic type or method 'Store<T>'. There is no implicit reference conversion from 'string' to 'IHasId'."

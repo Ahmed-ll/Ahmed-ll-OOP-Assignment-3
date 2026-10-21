@@ -36,41 +36,56 @@ public class Program
 
         //courseStore.GetAll().ForEach(st => Console.WriteLine(st)); // no output since the list is empty
 
+        //Console.WriteLine("____________________________________________________");
+
+        //Store<Student> students = new();
+
+        //students.Add(new Student(1, "Ahmed"));
+        //students.Add(new Student(2, "Mohamed"));
+
+        //Student? student = students.GetById(1);
+
+        //Console.WriteLine(student?.Name ?? "Student not found");
+
+        //Console.WriteLine($"Students count: {students.GetAll().Count}");
+
+        //students.Remove(2);
+
+        //Console.WriteLine($"Students count after removal: {students.GetAll().Count}");
+
+        //Store<Course> courses = new();
+
+        //courses.Add(new Course(1, "Python", 100m));
+        //courses.Add(new Course(2, "Java", 100m));
+
+        //Course? course = courses.GetById(2);
+
+        //Console.WriteLine(course?.Title ?? "Course not found");
+
+        //try
+        //{
+        //    courses.Add(new Course(2, "Another Course", 1000m));
+        //}
+        //catch (InvalidOperationException ex)
+        //{
+        //    Console.WriteLine(ex.Message);
+        //}
+
         Console.WriteLine("____________________________________________________");
 
-        Store<Student> students = new();
-
-        students.Add(new Student(1, "Ahmed"));
-        students.Add(new Student(2, "Mohamed"));
-
-        Student? student = students.GetById(1);
-
-        Console.WriteLine(student?.Name ?? "Student not found");
-
-        Console.WriteLine($"Students count: {students.GetAll().Count}");
-
-        students.Remove(2);
-
-        Console.WriteLine($"Students count after removal: {students.GetAll().Count}");
-
-        Store<Course> courses = new();
-
-        courses.Add(new Course(1, "Python", 100m));
-        courses.Add(new Course(2, "Java", 100m));
-
-        Course? course = courses.GetById(2);
-
-        Console.WriteLine(course?.Title ?? "Course not found");
-
-        try
+        var students = new List<Student>
         {
-            courses.Add(new Course(2, "Another Course", 1000m));
-        }
-        catch (InvalidOperationException ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-    
-    
+            new(1, "Ahmed"), new(2, "Sara"), new(3, "Omar"),
+            new(4, "Mona"), new(5, "Youssef")
+        };
+
+        // Page 2, size 2 => Omar, Mona
+        Console.WriteLine("Page 2 (size 2):");
+        foreach (var s in students.Page(2, 2))
+            Console.WriteLine($"  {s.Id} - {s.Name}");
+
+         //var store1 = new Store();           // NOT compile
+         //var store2 = new Store<string>();   // NOT compile
+         var store3 = new Store<Student>();  // compile
     }
 }
