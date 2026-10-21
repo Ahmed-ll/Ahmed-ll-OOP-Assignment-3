@@ -8,3 +8,17 @@
 
 The two stores have nearly identical implementations.
 This creates duplicated code and suggests that a generic class could handle both types.
+
+
+## Step 3 — Why GetById Does Not Compile
+
+### Compiler error
+
+`CS1061: 'T' does not contain a definition for 'Id' and no accessible extension method 'Id' accepting a first argument of type 'T' could be found (are you missing a using directive or an assembly reference?)`
+
+
+`T` is a generic type parameter. At this stage, the compiler does not know which type will replace `T`, so it cannot guarantee that the type has an `Id` property.
+
+Although both `Student` and `Course` have an `Id`, `Store<T>` must also be valid for other types that may not have one.
+
+We need to constrain `T` to types that guarantee an `Id` property.
