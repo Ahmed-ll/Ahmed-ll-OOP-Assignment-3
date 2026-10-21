@@ -22,3 +22,14 @@ This creates duplicated code and suggests that a generic class could handle both
 Although both `Student` and `Course` have an `Id`, `Store<T>` must also be valid for other types that may not have one.
 
 We need to constrain `T` to types that guarantee an `Id` property.
+
+
+## Step 4 — The IHasId Constraint
+
+`IHasId` defines a read-only `int Id` property.
+
+Both `Student` and `Course` implement this interface, guaranteeing that they provide an `Id`.
+
+The constraint `where T : IHasId` tells the compiler that every type used with `Store<T>` must implement `IHasId`. Therefore, `GetById` can access `item.Id` safely.
+
+This removes the duplicated store classes while keeping the code type-safe.

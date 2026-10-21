@@ -4,7 +4,7 @@ public class Program
 {
     static void Main(string[] args)
     {
-        var studentStore = new StudentStore();
+        var studentStore = new Store<Student>();
         var student1 = new Student(1, "Ahmed");
         var student2 = new Student(2, "Mohamed");
 
@@ -20,8 +20,8 @@ public class Program
         studentStore.GetAll().ForEach(st => Console.WriteLine(st)); // no output since the list is empty
 
         // ____________________________________________________________________________
-        
-        var courseStore = new CourseStore();
+
+        var courseStore = new Store<Course>();
         var course1 = new Course(1, "Python", 100m);
         var course2 = new Course(2, "Java", 100m);
 

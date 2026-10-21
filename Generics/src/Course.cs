@@ -1,6 +1,6 @@
 ﻿namespace src;
 
-public class Course
+public class Course : IHasId
 {
     public int Id { get; }
     public string Title { get; set; }
